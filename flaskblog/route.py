@@ -21,7 +21,7 @@ def Login():
         return redirect('homepage')
     form = LoginForm()
     if form.validate_on_submit():
-        user=User.query.filter_by(email=form.email.data).first()#load user from database based email user type
+        user=User.query.filter_by(email=form.email.data).first()
         
         if user and bcrypt.check_password_hash(user.password,form.password.data):
             login_user(user)#this function helps in login 
@@ -31,10 +31,9 @@ def Login():
 
 @app.route("/registration", methods=['GET', 'POST'])
 def Registration():
-    # if current_user:#check if user is current user who  has loged in
-    #     return redirect()
+  
     form = RegistrationForm()
-    if form.validate_on_submit():#will check whether email is unique etc etc and many conditions we have provided
+    if form.validate_on_submit():
         hashed=bcrypt.generate_password_hash(form.password.data).decode('utf-8')#hased password coming fromo user
         user=User(username=form.username.data,email=form.email.data,password=hashed)
        
@@ -70,11 +69,10 @@ def account():
 def homepage():
     page=request.args.get('page',1,type=int)
     print(page)#it returns what we write after?page=number that number will be returned
-    posts=Post.query.order_by(Post.datetime.desc()).paginate(page=page,per_page=5)#paginate takes page argument in that page 5 post wil be posted#contain list of all post we can access post posted by author through author backref as we have extblishd relationship based common user id
+    posts=Post.query.order_by(Post.datetime.desc()).paginate(page=page,per_page=5)
     
   
-    # for post in posts:
-    #     print(post.author.username)
+  
     return render_template('homepage.html',posts=posts)
 
 def save(image):
