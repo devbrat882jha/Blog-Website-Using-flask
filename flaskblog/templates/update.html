@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Profile</title>
+    <!-- Include Bootstrap CSS (replace with the correct Bootstrap version URL) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Navbar (replace with your own navbar if needed) -->
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <a class="navbar-brand" href="#">Your App Name</a>
+    <!-- Add your navbar items here -->
+</nav>
+
+<!-- Edit Profile Form -->
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <h2>Edit Profile</h2>
+
+            <!-- Email and Username Form -->
+            <form action="{{url_for('update_profile')}}" method="POST" enctype="multipart/form-data">
+                {{ form.hidden_tag() }}
+                <!-- Email -->
+                <div class="form-group">
+                    {{form.email.label}}
+                    {{form.email(class="form-control")}} 
+                    {% for error in form.email.errors %}
+                    <p style="color: red;">{{ error }}</p>
+                    {% endfor %}
+                  </div>
+                <!-- Username -->
+                
+            <div class="form-group">
+                {{form.username.label}}
+                {{form.username(class="form-control")}}
+                {% for error in form.username.errors %}
+                <p style="color: red;">{{ error }}</p>
+                {% endfor %} 
+              </div>
+              <div class="form-group">
+                {{form.profile.label}}
+                {{form.profile(class="form-control-file")}}
+                {% for error in form.profile.errors %}
+                <p style="color: red;">{{ error }}</p>
+                {% endfor %} 
+              </div>
+              
+
+                <!-- Submit Button -->
+                <button type="submit" class="btn btn-primary">Save Changes</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS (replace with the correct Bootstrap version URL) -->
+<script src="https://code

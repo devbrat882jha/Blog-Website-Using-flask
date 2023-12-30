@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Include Bootstrap CSS (replace with the correct Bootstrap version URL) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<!-- Navbar (replace with your own navbar if needed) -->
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">Your App Name</a>
+    <!-- Add your navbar items here -->
+</nav>
+
+<!-- User Profile -->
+<div class="container mt-5">
+    <div class="row">
+        <!-- Cover Photo -->
+        <div class="col-12">
+            <img src="https://via.placeholder.com/1500x300" class="img-fluid" alt="Cover Photo">
+        </div>
+
+        <!-- Profile Picture and User Info -->
+        <div class="col-md-3 mt-3">
+           <a href="{{image_file}}"> <img src="{{image_file}}"" class="img-fluid rounded-circle" alt="Profile Picture" style="max-width: 100px; max-height: 100px;"></a>
+        </div>
+        <div class="col-md-9 mt-3">
+            <h2>{{ current_user.username }}</h2>
+            <p>Location: City, Country</p>
+
+            <!-- Edit Profile and Logout Buttons -->
+            <a href="{{ url_for('update_profile') }}" class="btn btn-primary">Update Profile</a>
+            <a href="{{ url_for('Logout') }}" class="btn btn-danger ml-2">Logout</a>
+        </div>
+    </div>
+
+    <!-- User Posts or Content Section -->
+    <div class="row mt-5">
+        <div class="col-md-8 offset-md-2">
+            <h3>Posts</h3>
+            <!-- Example Post (repeat as needed) -->
+            <div class="card mb-3">
+                <div class="card-body">
+                    <p class="card-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                </div>
+            </div>
+            <!-- Repeat the above card structure for additional posts -->
+        </div>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS (replace with the correct Bootstrap version URL) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>

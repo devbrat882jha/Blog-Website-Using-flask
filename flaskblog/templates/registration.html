@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <!-- Include Bootstrap CSS (replace with the correct Bootstrap version URL) -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+
+<div class="container mt-5">
+    <div class="col-md-6 mx-auto">
+        <form method="POST" action="{{ url_for('Registration') }}">
+          {{ form.hidden_tag() }}
+            <h2 class="mb-3 text-center">Sign Up</h2>
+            <p class="lead text-center">Create a new account to get started.</p>
+
+            <div class="form-group">
+              {{form.username.label}}
+              {{form.username(class="form-control")}}
+              {% for error in form.username.errors %}
+              <p style="color: red;">{{ error }}</p>
+              {% endfor %} 
+            </div>
+
+            <div class="form-group">
+              {{form.email.label}}
+              {{form.email(class="form-control")}} 
+              {% for error in form.email.errors %}
+              <p style="color: red;">{{ error }}</p>
+              {% endfor %}
+            </div>
+
+            <div class="form-group">
+              {{form.password.label}}
+              {{ form.password(class="form-control")}} 
+            </div>
+                  
+            <div class="form-group">
+              {{form.confirm_password.label}}
+              {{ form.confirm_password(class="form-control")}}
+            </div>
+            {{form.submit(class="btn btn-primary")}}
+            
+        </form>
+    </div>
+</div>
+
+<!-- Include Bootstrap JS (replace with the correct Bootstrap version URL) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
+
+
+
