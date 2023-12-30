@@ -7,15 +7,15 @@ from flask_wtf.file import FileField,file_allowed
 
 secret_key="47cbc83e5d0ca093b0f8fb560178904c"
 
-#we have username templates in username variable,so for other variables, username as argument is label that user will see
+
 class RegistrationForm(FlaskForm):
     username=StringField('Username',validators=[DataRequired(),Length(min=4,max=20)])#in list
     email=StringField('Email',validators=[DataRequired(),Email()])
     password=PasswordField('password',validators=[DataRequired(),Length(min=4)])
     confirm_password=PasswordField('confirm_password',validators=[EqualTo('password')])
     submit=SubmitField('Sign up')
-    def validate_username(self,username):#this is field #if condition mathces then it will raise error in form
-        user=User.query.filter_by(username=username.data).first()#if username in database matches to username.data(in form)then user object is initialise
+    def validate_username(self,username):#this is field
+        user=User.query.filter_by(username=username.data).first()
         if user:
             raise ValidationError("username already taken")#import validation error
     def validate_email(self,email):#if condition mathces then it will raise error in form
